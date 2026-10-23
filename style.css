@@ -1,0 +1,65 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; color: #fff; font-family: "Be Vietnam Pro", system-ui, sans-serif; line-height: 1.7; background: #140c1c; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -2; background: radial-gradient(1200px 700px at 72% 28%, #4d2c48 0%, #2a1731 45%, #140c1c 100%); }
+#scene { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; display: block; pointer-events: none; }
+
+/* thanh nổi phía trên */
+.pill { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; align-items: center; gap: 16px; max-width: calc(100% - 24px); padding: 6px 6px 6px 20px; border-radius: 999px; background: rgba(30, 16, 40, .6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, .18); }
+.brand { font-size: .9rem; font-weight: 500; white-space: nowrap; }
+.pill nav { display: flex; gap: 2px; }
+.pill nav a { padding: 6px 12px; border-radius: 999px; color: #ead6e4; text-decoration: none; font-size: .88rem; white-space: nowrap; }
+.pill nav a:hover { background: rgba(255, 255, 255, .12); }
+.pill button { border: 0; border-radius: 999px; padding: 7px 16px; font: inherit; font-weight: 700; cursor: pointer; background: #ffc2dc; color: #3a1530; }
+
+/* màn hình đầu */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 100px clamp(20px, 6vw, 90px) clamp(28px, 8vh, 80px); }
+.hero-text { max-width: 560px; }
+.tag { margin: 0 0 8px; display: inline-block; padding: 4px 14px; border-radius: 999px; background: #ffc2dc; color: #3a1530; font-weight: 700; font-size: .85rem; }
+.hero h1 { margin: 8px 0 0; font-weight: 300; font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1.05; letter-spacing: -.02em; color: #ffe9f2; text-shadow: 0 0 40px rgba(255, 150, 200, .35); }
+.lead { margin: 18px 0 18px; color: #e6cfe0; max-width: 46ch; }
+.info { display: flex; flex-wrap: wrap; gap: 10px 32px; margin: 0 0 24px; }
+.info dt { font-size: .8rem; color: #cba9c3; }
+.info dd { margin: 0; font-weight: 500; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.primary, .ghost { padding: 12px 22px; border-radius: 999px; font: inherit; font-weight: 500; cursor: pointer; text-decoration: none; color: #fff; }
+.primary { border: 0; background: #ffc2dc; color: #3a1530; font-weight: 700; }
+.ghost { border: 1px solid rgba(255, 255, 255, .4); background: rgba(255, 255, 255, .06); }
+.primary:hover, .ghost:hover, .pill button:hover { filter: brightness(1.1); }
+button:focus-visible, .ghost:focus-within, a:focus-visible, input:focus-visible { outline: 3px solid #ffe27a; outline-offset: 2px; }
+
+.cards { display: flex; flex-direction: column; gap: 14px; width: min(300px, 100%); }
+.card { display: flex; gap: 14px; align-items: center; padding: 12px; border-radius: 20px; background: #f5eef1; color: #2a1731; box-shadow: 0 18px 40px rgba(0, 0, 0, .3); }
+.card h2 { margin: 0 0 2px; font-size: 1rem; }
+.card p { margin: 0; font-size: .8rem; color: #6c5667; line-height: 1.4; }
+.thumb { flex: none; width: 64px; height: 64px; border-radius: 14px; }
+.t1 { background: radial-gradient(circle at 30% 30%, #ffd1e4, #c6648f 60%, #5d2c4b); }
+.t2 { background: radial-gradient(circle at 60% 70%, #9fb59a, #4c6a4f 60%, #1f3324); }
+
+/* nội dung báo cáo */
+.content { max-width: 880px; margin: 0 auto; padding: 0 16px 40px; }
+.panel { margin: 0 0 28px; padding: clamp(20px, 4vw, 40px); border-radius: 24px; background: rgba(24, 12, 32, .78); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+.panel h2 { margin: 0 0 12px; font-weight: 500; font-size: clamp(1.5rem, 4vw, 2.1rem); color: #ffe9f2; }
+.panel h3 { margin: 24px 0 8px; font-size: 1.05rem; color: #ffb3d1; }
+.panel p, .panel li { max-width: 68ch; color: #f1e3ec; }
+code { font-family: "Source Code Pro", monospace; font-size: .9em; background: rgba(255, 194, 220, .15); padding: 1px 6px; border-radius: 4px; }
+pre { margin: 8px 0 16px; padding: 16px 18px; border-radius: 12px; overflow-x: auto; font-family: "Source Code Pro", monospace; font-size: .9rem; line-height: 1.6; }
+pre code { background: none; padding: 0; font-size: inherit; }
+pre.code { background: #0e0715; color: #f3e8f0; border-left: 4px solid #ffc2dc; }
+pre.out { background: rgba(255, 255, 255, .08); color: #fff; border-left: 4px solid #9fb59a; min-height: 1em; }
+pre.out em { font-style: normal; color: #ffb3d1; font-weight: 600; }
+.out-label { margin: 0; font-size: .85rem; color: #cba9c3; }
+.note { border-left: 4px solid #ffe27a; padding-left: 12px; }
+.try { margin-top: 24px; padding: 4px 18px 8px; border-radius: 16px; background: rgba(255, 194, 220, .08); border: 1px dashed rgba(255, 194, 220, .45); }
+.try label { display: inline-flex; align-items: center; gap: 8px; margin: 0 16px 8px 0; }
+.try input { font: inherit; width: 140px; padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, .3); background: rgba(0, 0, 0, .35); color: #fff; }
+.links a { color: #ffc2dc; }
+
+footer { padding: 28px 16px 40px; text-align: center; font-size: .9rem; color: #cba9c3; }
+
+@media (max-width: 860px) {
+  .pill nav { display: none; }
+  .hero { flex-direction: column; align-items: flex-start; justify-content: flex-end; }
+  .cards { flex-direction: row; width: 100%; }
+  .card { flex: 1; flex-direction: column; align-items: flex-start; }
+}

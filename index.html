@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Báo cáo Python – Nguyễn Xuân Phúc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <header class="pill">
+    <span class="brand">Nguyễn Xuân Phúc</span>
+    <nav>
+      <a href="#bien">Biến</a>
+      <a href="#input">input()</a>
+      <a href="#print">print()</a>
+      <a href="#ifelse">if – else</a>
+      <a href="#tai-nguyen">Tài nguyên</a>
+    </nav>
+    <button id="miniPlay" type="button" aria-label="Phát hoặc dừng nhạc">Phát</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="tag">Báo cáo môn Python</p>
+      <h1>Step into<br>the living world</h1>
+      <p class="lead">Biến, lệnh input(), lệnh print() và câu lệnh điều kiện if – else, kèm ví dụ cho từng phần.</p>
+      <dl class="info">
+        <div><dt>Sinh viên</dt><dd>Nguyễn Xuân Phúc</dd></div>
+        <div><dt>Trường</dt><dd>Đại học FPT</dd></div>
+        <div><dt>Giảng viên</dt><dd>Nguyễn Đức Tài</dd></div>
+      </dl>
+      <div class="actions">
+        <button id="play" type="button" class="primary">Bật nhạc</button>
+        <label class="ghost">Chọn file nhạc
+          <input id="file" type="file" accept="audio/*" hidden>
+        </label>
+        <a class="ghost" href="#bien">Xem nội dung</a>
+      </div>
+    </div>
+
+    <aside class="cards">
+      <article class="card">
+        <div class="thumb t1"></div>
+        <div>
+          <h2>Let the wild bloom</h2>
+          <p id="status">Di chuột để cành hoa nghiêng theo</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb t2"></div>
+        <div>
+          <h2>After the rain</h2>
+          <p><span id="count">0</span> bông hoa đang nở</p>
+        </div>
+      </article>
+    </aside>
+  </section>
+
+  <main class="content">
+
+    <section id="bien" class="panel">
+      <h2>1. Biến trong Python</h2>
+      <h3>Khái niệm</h3>
+      <p>Biến là một cái tên dùng để lưu trữ dữ liệu trong bộ nhớ. Khi cần dùng lại dữ liệu, ta gọi tên biến thay vì viết lại giá trị.</p>
+      <h3>Chức năng</h3>
+      <ul>
+        <li>Lưu giá trị (số, chữ, đúng/sai…) để dùng nhiều lần.</li>
+        <li>Thay đổi giá trị trong lúc chương trình chạy.</li>
+        <li>Python tự nhận biết kiểu dữ liệu, không cần khai báo trước.</li>
+      </ul>
+      <p>Quy tắc đặt tên: bắt đầu bằng chữ cái hoặc dấu <code>_</code>, không chứa khoảng trắng, không trùng từ khóa như <code>if</code>, <code>else</code>, và phân biệt chữ hoa – chữ thường.</p>
+      <h3>Ví dụ</h3>
+      <pre class="code"><code>ten = "Phúc"        # str: chuỗi
+tuoi = 19           # int: số nguyên
+diem = 8.5          # float: số thực
+dang_hoc = True     # bool: đúng / sai
+
+print(ten, tuoi, diem, dang_hoc)
+tuoi = tuoi + 1     # đổi giá trị của biến
+print(tuoi)</code></pre>
+      <p class="out-label">Kết quả</p>
+      <pre class="out"><code>Phúc 19 8.5 True
+20</code></pre>
+      <div class="try">
+        <h3>Thử ngay</h3>
+        <label>Tên <input id="v-ten" value="Phúc"></label>
+        <label>Tuổi <input id="v-tuoi" type="number" value="19"></label>
+        <pre class="out" id="v-out"></pre>
+      </div>
+    </section>
+
+    <section id="input" class="panel">
+      <h2>2. Lệnh input()</h2>
+      <h3>Khái niệm</h3>
+      <p><code>input()</code> là hàm có sẵn của Python, dùng để nhận dữ liệu người dùng gõ từ bàn phím.</p>
+      <h3>Chức năng</h3>
+      <ul>
+        <li>Hiển thị một câu nhắc (nếu có) rồi chờ người dùng nhập và nhấn Enter.</li>
+        <li>Luôn trả về kiểu chuỗi (<code>str</code>). Muốn tính toán phải đổi kiểu bằng <code>int()</code> hoặc <code>float()</code>.</li>
+      </ul>
+      <h3>Ví dụ</h3>
+      <pre class="code"><code>ten = input("Nhập tên của bạn: ")
+tuoi = int(input("Nhập tuổi của bạn: "))   # đổi chuỗi sang số nguyên
+
+print("Năm sau bạn", tuoi + 1, "tuổi")</code></pre>
+      <p class="out-label">Chạy chương trình (chữ màu hồng là phần người dùng nhập)</p>
+      <pre class="out"><code>Nhập tên của bạn: <em>Phúc</em>
+Nhập tuổi của bạn: <em>19</em>
+Năm sau bạn 20 tuổi</code></pre>
+      <p class="note">Lưu ý: nếu không dùng <code>int()</code>, <code>tuoi + 1</code> sẽ báo lỗi vì không cộng được chuỗi với số.</p>
+      <div class="try">
+        <h3>Thử ngay</h3>
+        <label>Nhập tuổi <input id="n-tuoi" type="number" value="19"></label>
+        <pre class="out" id="n-out"></pre>
+      </div>
+    </section>
+
+    <section id="print" class="panel">
+      <h2>3. Lệnh print()</h2>
+      <h3>Khái niệm</h3>
+      <p><code>print()</code> là hàm có sẵn dùng để in dữ liệu ra màn hình.</p>
+      <h3>Chức năng</h3>
+      <ul>
+        <li>In chuỗi, số, biến hoặc kết quả biểu thức.</li>
+        <li>In nhiều giá trị cùng lúc, cách nhau bằng dấu phẩy (mặc định ngăn cách bằng một khoảng trắng).</li>
+        <li>Tham số <code>sep</code> đổi ký tự ngăn cách, <code>end</code> đổi ký tự cuối dòng.</li>
+        <li>f-string giúp chèn biến vào chuỗi gọn hơn.</li>
+      </ul>
+      <h3>Ví dụ</h3>
+      <pre class="code"><code>ten = "Phúc"
+diem = 8.5
+
+print("Xin chào Python!")
+print("Tên:", ten, "- Điểm:", diem)
+print("2026", "10", "23", sep="/")
+print("Dòng 1", end=" | ")
+print("Dòng 2")
+print(f"{ten} được {diem} điểm")</code></pre>
+      <p class="out-label">Kết quả</p>
+      <pre class="out"><code>Xin chào Python!
+Tên: Phúc - Điểm: 8.5
+2026/10/23
+Dòng 1 | Dòng 2
+Phúc được 8.5 điểm</code></pre>
+    </section>
+
+    <section id="ifelse" class="panel">
+      <h2>4. Câu lệnh điều kiện if – elif – else</h2>
+      <h3>Khái niệm</h3>
+      <p>Câu lệnh điều kiện cho chương trình chọn nhánh để chạy, tùy điều kiện là đúng (<code>True</code>) hay sai (<code>False</code>).</p>
+      <h3>Chức năng</h3>
+      <ul>
+        <li><code>if</code>: chạy khối lệnh khi điều kiện đúng.</li>
+        <li><code>elif</code>: kiểm tra thêm điều kiện khác nếu các điều kiện trước sai.</li>
+        <li><code>else</code>: chạy khi tất cả điều kiện trên đều sai.</li>
+        <li>Điều kiện dùng phép so sánh <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>. Cuối dòng có dấu <code>:</code> và khối lệnh phải thụt vào đầu dòng.</li>
+      </ul>
+      <h3>Ví dụ 1: if – else</h3>
+      <pre class="code"><code>diem = float(input("Nhập điểm: "))
+
+if diem &gt;= 5:
+    print("Đậu môn")
+else:
+    print("Rớt môn")</code></pre>
+      <p class="out-label">Kết quả khi nhập 7</p>
+      <pre class="out"><code>Đậu môn</code></pre>
+      <h3>Ví dụ 2: if – elif – else</h3>
+      <pre class="code"><code>diem = float(input("Nhập điểm: "))
+
+if diem &gt;= 8:
+    print("Giỏi")
+elif diem &gt;= 6.5:
+    print("Khá")
+elif diem &gt;= 5:
+    print("Trung bình")
+else:
+    print("Yếu")</code></pre>
+      <p class="out-label">Kết quả khi nhập 7</p>
+      <pre class="out"><code>Khá</code></pre>
+      <div class="try">
+        <h3>Thử ngay</h3>
+        <label>Điểm <input id="i-diem" type="number" min="0" max="10" step="0.1" value="7"></label>
+        <pre class="out" id="i-out"></pre>
+      </div>
+    </section>
+
+    <section id="tai-nguyen" class="panel">
+      <h2>Tài nguyên tham khảo</h2>
+      <ul class="links">
+        <li><a href="https://docs.python.org/3/tutorial/introduction.html" target="_blank" rel="noopener">Python Tutorial – Giới thiệu (biến, số, chuỗi)</a></li>
+        <li><a href="https://docs.python.org/3/library/functions.html#input" target="_blank" rel="noopener">Tài liệu chính thức: hàm input()</a></li>
+        <li><a href="https://docs.python.org/3/library/functions.html#print" target="_blank" rel="noopener">Tài liệu chính thức: hàm print()</a></li>
+        <li><a href="https://docs.python.org/3/tutorial/controlflow.html#if-statements" target="_blank" rel="noopener">Tài liệu chính thức: câu lệnh if</a></li>
+        <li><a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">W3Schools – Python Tutorial</a></li>
+        <li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Tải Python</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>Báo cáo môn Python – Nguyễn Xuân Phúc – Đại học FPT – Giảng viên: Nguyễn Đức Tài</footer>
+
+  <audio id="audio" src="music/noinaycoanh.mp3" loop preload="auto"></audio>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>
